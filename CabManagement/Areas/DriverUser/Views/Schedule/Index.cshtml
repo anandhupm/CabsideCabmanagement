@@ -1,0 +1,43 @@
+﻿@*@model IEnumerable<CabSchedule>
+
+<div class="container-fluid">
+
+    @if (Model.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Cost</th>
+                <th>Name of Driver</th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td>@item.To</td>
+                    <td>@item.Cost</td>
+                    <td>@item.User.FirstName</td>
+
+                    <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Do you want to Delete the Schedule ?')">Delete</a> </td>
+
+
+                </tr>
+
+
+            }
+        </table>
+
+    }
+    else
+    {
+        <div class="alert alert-info ">
+            No Schedule Were Found. Please <a asp-action="create">add schedule</a>.
+        </div>
+
+    }
+
+</div>*@

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CabDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@if (Model.Any())
+{
+
+    <table class="table">
+        <tr>
+            <th>Vehicle Number</th>
+            <th>Model Name</th>
+            <th>Model Number</th>
+            <th>Cab Type</th>
+            <th>Capacity</th>
+            <th>Description</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.VehicleNumber</td>
+                <td>@item.Name</td>
+                <td>@item.ModelNumber</td>
+                <td>@item.Type</td>
+                <td>@item.Capacity</td>
+                <td>@item.Description</td>
+                <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a></td>
+                <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Do you want to Delete the Cab Details ?')">Delete</a> </td>
+
+                <td></td>
+
+
+            </tr>
+        }
+
+
+
+    </table>
+    <div>
+        <a asp-action="Edit" asp-route-id="">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+}
+else
+{
+    <div class="alert alert-info ">
+        No Cab Were Found. Please 
+        <a asp-action="create" class="alert-link">+ Add Cab</a> first.
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
